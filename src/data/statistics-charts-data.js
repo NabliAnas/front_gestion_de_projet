@@ -107,22 +107,22 @@ const completedTasksChart = {
 export const statisticsChartsData = [
   {
     color: "white",
-    title: "Website View",
-    description: "Last Campaign Performance",
+    title: "Les clients",
+    description: "Alexsys Solutions",
     footer: "campaign sent 2 days ago",
     chart: websiteViewsChart,
   },
   {
     color: "white",
-    title: "Daily Sales",
-    description: "15% increase in today sales",
+    title: "Revenue des projets",
+    description: "Alexsys Solutions",
     footer: "updated 4 min ago",
     chart: dailySalesChart,
   },
   {
     color: "white",
-    title: "Completed Tasks",
-    description: "Last Campaign Performance",
+    title: "les progressions des projets",
+    description: "Alexsys Solutions",
     footer: "just updated",
     chart: completedTasksChart,
   },

@@ -157,6 +157,7 @@ export function Projets() {
                 </Option>
               ))}
             </Select>
+            {role === 2 ? "" :
             <Select
               label="filtrer avec les managers"
               onChange={handlefiltermanagers}
@@ -168,6 +169,7 @@ export function Projets() {
                 </Option>
               ))}
             </Select>
+          }
             <Select
               label="filtrer avec le statut"
               onChange={handlefilterstatut}

@@ -99,4 +99,20 @@ const getrole = async () => {
     throw new Error('feetching role echec :(');
   }
 };
-export { createproject ,getproject,deleteProject,updateProject,filtrermanager,filtrerstatus,filtreranne,getrole,getprojectf};
+const getnombreprojets = async () => {
+  const res =await alexsys.get('/nombreProjets/',{headers});
+  return res.data;
+}
+const getmontant = async () => {
+  const res =await alexsys.get('/countmontant/',{headers});
+  return res.data;
+}
+const getnbrclient = async () => {
+  const res =await alexsys.get('/clients/count/',{headers});
+  return res.data;
+}
+const getnbrusers= async () => {
+  const res =await alexsys.get('/users/count/',{headers});
+  return res.data;
+}
+export { createproject ,getnombreprojets,getmontant,getnbrclient,getnbrusers,getproject,deleteProject,updateProject,filtrermanager,filtrerstatus,filtreranne,getrole,getprojectf};
