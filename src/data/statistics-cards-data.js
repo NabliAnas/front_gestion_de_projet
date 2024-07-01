@@ -4,7 +4,7 @@ import {
   UsersIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
-import { getnombreprojets, getmontant,getnbrclient,getnbrusers } from "@/services/projetservices";
+
 
 export const getStatisticsCardsData = async () => {
   const projetsData = await getnombreprojets();

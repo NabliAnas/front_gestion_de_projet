@@ -3,12 +3,6 @@ const login = async (email, password) => {
   try {
     const response = await alexsys.post(`/login`, { email, password });
     console.log(response.data.token);
-    const headers = {
-      Authorization: `Bearer ${response.data.token}`, 
-      "Content-Type": "multipart/form-data"
-    };
-    const response2 = await alexsys.get(`/getrole/`, { headers });
-    localStorage.setItem("role",response2.data.idrole)
     return response.data.token;
   } catch (error) {
     console.log("error login", error);

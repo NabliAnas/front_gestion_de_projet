@@ -10,10 +10,11 @@ import {
 import { DialogWithForm } from "./addclient";
 import { Dialogupdate } from "./updateclient";
 import { getClientList, deleteClient } from "@/services/clientservices";
-import { createproject,getproject } from "@/services/projetservices";
+
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import swal from 'sweetalert'
+
 import { confirmation } from "@/widgets/alert_confirmation";
 export function Clients() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -24,18 +25,14 @@ export function Clients() {
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [imgcount, setImgcount] = useState(1);
+  const [role, setRole] = useState(1);
   const initialized = useRef(false)
   const clientsPerPage =6;
   useEffect(() => {
        fetchData();        
   }, [reload]);
 async function fetchData() {
-      try {
-        const data = await getClientList();
-        setClients(data);
-      } catch (error) {
-        console.error("Error fetching client list:", error);
-      }
+      
     }
   const handledelete = async (idc) => {
     const confirmer = await confirmation();
@@ -96,10 +93,11 @@ async function fetchData() {
           <Typography variant="h6" color="white">
             Liste des clients
           </Typography>
+          {role === 3 ? "" :
           <Button className="flex items-center gap-3" size="sm" onClick={handleAddClientClick}>
             <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Ajouter Client
           </Button>
-          
+          }
         </CardHeader>
 
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
@@ -107,7 +105,7 @@ async function fetchData() {
             <thead>
               <tr>
                 
-                {["responsable","raison_sociale", "adresse", "telephone","actions"].map(
+                {["responsable","raison_sociale", "adresse", "telephone",role === 3 ? "" :"actions"].map(
                   (el) => (
                     <th
                       key={el}
@@ -171,10 +169,12 @@ async function fetchData() {
                       {telephone}
                     </Typography>
                   </td>
-                  <td className="py-3 px-5 border-b border-blue-gray-50">
-                    <Button color="red" size="sm" onClick={() => handledelete(id)}>Supprimer </Button>&nbsp;&nbsp;
-                    <Button color="green" size="sm" onClick={() => handleupdateClientClick({ id, raison_sociale, responsable, email, adresse, telephone })}>Modifier</Button>
-                  </td>
+                  {role === 3 ? "" :
+                    <td className="py-3 px-5 border-b border-blue-gray-50">
+                      <Button color="red" size="sm" onClick={() => handledelete(id)}>Supprimer </Button>&nbsp;&nbsp;
+                      <Button color="green" size="sm" onClick={() => handleupdateClientClick({ id, raison_sociale, responsable, email, adresse, telephone })}>Modifier</Button>
+                    </td>
+                  }
                 </tr>
               ))}
             </tbody>

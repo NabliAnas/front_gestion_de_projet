@@ -5,7 +5,7 @@ import { IconButton } from "@material-tailwind/react";
 import { Sidenav, DashboardNavbar, Configurator, Footer } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
-import { getrole } from "@/services/projetservices"; // Importing getrole function
+
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -19,9 +19,7 @@ export function Dashboard() {
     const currentPath = window.location.pathname;
     if (currentPath !== "/auth/sign-up") {
       if (token) {
-        // Fetch user role when component mounts
-        getrole().then(role => setUserRole(role));
-        console.log(22222222);
+        
       } else {
         navigate("/auth/sign-in");
       }
